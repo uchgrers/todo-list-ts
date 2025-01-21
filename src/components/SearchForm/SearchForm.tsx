@@ -6,12 +6,16 @@ import styles from './SearchForm.module.scss';
 const SearchForm = () => {
 
     const [text, setText] = useState('')
+    const [isInputTouched, setIsInputTouched] = useState(false)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        const searchTimeout = setTimeout(() => {
-            dispatch(getTodos({searchParams: text}))
-        }, 300)
+        let searchTimeout: string | number | NodeJS.Timeout | undefined
+        if (isInputTouched) {
+            searchTimeout = setTimeout(() => {
+                dispatch(getTodos({searchParams: text}))
+            }, 300)
+        }
 
         return () => {
             clearTimeout(searchTimeout)
@@ -25,7 +29,10 @@ const SearchForm = () => {
                     <input type="search"
                            placeholder="Search"
                            value={text}
-                           onChange={(e) => setText(e.target.value)}
+                           onChange={(e) => {
+                               setIsInputTouched(true)
+                               return setText(e.target.value)
+                           }}
                     />
                 </form>
             }
