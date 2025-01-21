@@ -14,7 +14,10 @@ export const todosAPI = {
     },
     addTodo(todoData: AddTodoType): Promise<AddTodoResponseType> {
         return baseRequestParams.post(todosUrl, todoData)
-            .then(response => response.data.data)
+            .then(response => {
+                console.log(response)
+                return response.data.data
+            })
     },
     removeTodo(id: RemoveTodoType): Promise<RemoveTodoResponseType> {
         return baseRequestParams.put(todosUrl, {id, type: 'remove'})
