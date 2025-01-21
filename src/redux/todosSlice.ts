@@ -89,6 +89,7 @@ const todosSlice = createSlice({
             state.currentPage = Math.ceil(state.todosCount / state.pageSize)
         })
         builder.addCase(getTodos.fulfilled, (state, action) => {
+            console.log(current(state))
             state.todos = action.payload.todos
             state.todosCount = action.payload.todosCount
         })
