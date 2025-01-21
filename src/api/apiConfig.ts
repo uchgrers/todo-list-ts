@@ -1,8 +1,13 @@
 import axios from "axios";
 
+const baseURL =
+    process.env.NODE_ENV === "production"
+        ? "https://todo-list-ts-production.up.railway.app/"
+        : "http://localhost:8000/"
+
 export const baseRequestParams = axios.create({
     withCredentials: true,
-    baseURL: 'http://localhost:8000/'
+    baseURL
 })
 
 export const todosUrl = 'todos'
