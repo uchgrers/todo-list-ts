@@ -19,16 +19,16 @@ function App() {
 
     const dispatch = useAppDispatch()
 
-    // useEffect(() => {
-    //     const fetchTodos = async () => {
-    //         try {
-    //             await dispatch(getTodos({searchParams: ''}))
-    //         } finally {
-    //             setIsLoading(false)
-    //         }
-    //     }
-    //     fetchTodos()
-    // }, [dispatch])
+    useEffect(() => {
+        const fetchTodos = async () => {
+            try {
+                await dispatch(getTodos({searchParams: ''}))
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchTodos()
+    }, [dispatch])
 
     const addNewTodo = (e: React.FormEvent) => {
         if (text && text.header) {
