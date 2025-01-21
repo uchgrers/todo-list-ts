@@ -10,10 +10,6 @@ const buildPath = path.join(__dirname, '../../build');
 
 app.use(express.static(buildPath));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-});
-
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -114,6 +110,10 @@ app.get('/todos', (req, res) => {
         todosCount: requestedTodos.length
     })
 })
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+});
 
 require('./routes/index')(app);
 
