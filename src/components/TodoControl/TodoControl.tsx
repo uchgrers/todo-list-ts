@@ -4,12 +4,12 @@ import {completeTodo, removeTodo} from "../../redux/todosSlice";
 import styles from './TodoControl.module.scss';
 import ConfirmDeleteModal from "../ConfirmDeleteModal/ConfirmDeleteModal";
 
-type TodoControl = {
+type TodoControlType = {
     setIsEditing: (isEditing: boolean) => void,
     id: number
 }
 
-const TodoControl: React.FC<TodoControl> = (props) => {
+const TodoControl: React.FC<TodoControlType> = (props) => {
 
     const [confirmDelete, setConfirmDelete] = useState(false)
 
