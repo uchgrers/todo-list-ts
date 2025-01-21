@@ -8,15 +8,15 @@ const SearchForm = () => {
     const [text, setText] = useState('')
     const dispatch = useAppDispatch()
 
-    // useEffect(() => {
-    //     const searchTimeout = setTimeout(() => {
-    //         dispatch(getTodos({searchParams: text}))
-    //     }, 300)
-    //
-    //     return () => {
-    //         clearTimeout(searchTimeout)
-    //     }
-    // }, [text])
+    useEffect(() => {
+        const searchTimeout = setTimeout(() => {
+            dispatch(getTodos({searchParams: text}))
+        }, 300)
+
+        return () => {
+            clearTimeout(searchTimeout)
+        }
+    }, [text])
 
     return (
         <>
