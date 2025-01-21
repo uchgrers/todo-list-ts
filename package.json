@@ -52,7 +52,7 @@
     "@types/css-modules": "^1.0.5",
     "@types/jest": "^29.5.14",
     "concurrently": "^9.1.2",
-    "typescript": "^5.0.4"
+    "typescript": "^4.9.5"
   },
   "proxy": "http://localhost:8000"
 }
