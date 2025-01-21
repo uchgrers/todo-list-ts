@@ -80,7 +80,7 @@ const todosSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(addTodo.fulfilled, (state, action) => {
-            console.log(state)
+            console.log(state.todos)
             console.log(action.payload)
             state.todos.push(action.payload.todo)
             state.todosCount = action.payload.todosCount
