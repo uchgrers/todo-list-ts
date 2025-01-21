@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
 import {
     IdType,
     TodoItemType,
@@ -80,6 +80,8 @@ const todosSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(addTodo.fulfilled, (state, action) => {
+            console.log(state)
+            console.log(current(state))
             console.log(state.todos)
             console.log(action.payload)
             state.todos.push(action.payload.todo)
