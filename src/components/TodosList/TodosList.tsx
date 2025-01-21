@@ -1,0 +1,37 @@
+import React, {useEffect, useMemo} from 'react';
+import styles from './TodosList.module.scss';
+import {useAppDispatch, useAppSelector, useTodosSelector} from "../../redux/hooks";
+import TodosItem from "../TodosItem/TodosItem";
+import {setTodosCount} from "../../redux/todosSlice";
+
+const TodosList = () => {
+    const dispatch = useAppDispatch()
+    const pageSize = useAppSelector(state => state.todosReducer.pageSize)
+    const currentPage = useAppSelector(state => state.todosReducer.currentPage)
+    const criterion = useAppSelector(state => state.todosReducer.todosCriterion)
+
+    const filteredTasks = useTodosSelector({currentPage, pageSize, criterion})
+    const todos = filteredTasks.tasks
+
+    const todosComponents = useMemo(() => {
+        return todos
+            ?.map((todo) => <TodosItem id={todo.id}
+                                       header={todo.header}
+                                       description={todo.description}
+                                       key={todo.id}
+                                       completed={todo.completed}
+            />)
+    }, [todos])
+
+    useEffect(() => {
+        dispatch(setTodosCount(filteredTasks.tasksCount))
+    }, [todosComponents.length])
+
+    return (
+        <ul className={styles.list}>
+            {todosComponents}
+        </ul>
+    );
+};
+
+export default TodosList;

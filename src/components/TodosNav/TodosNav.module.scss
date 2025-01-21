@@ -1,0 +1,47 @@
+@import "src/styles/media";
+@import "src/styles/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: $container-width;
+
+  &__openNavButton {
+    width: 100%;
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 20px;
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+
+    @include mobile {
+      flex-wrap: wrap;
+      row-gap: 20px;
+    }
+  }
+
+  &__selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+
+    @include mobile {
+      width: 100%;
+      justify-content: end;
+    }
+  }
+}

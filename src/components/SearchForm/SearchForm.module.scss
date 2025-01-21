@@ -1,0 +1,13 @@
+.form {
+  position: relative;
+
+  &__search_result {
+    position: absolute;
+    width: 100%;
+    border: var(--border);
+    max-height: 300px;
+    overflow-y: scroll;
+    background-color: var(--color-light);
+    z-index: 1;
+  }
+}

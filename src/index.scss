@@ -1,0 +1,27 @@
+@import "styles/fonts",
+"styles/variables",
+"styles/normalize",
+"styles/media",
+"styles/globals"
+;
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.28;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: var(--color-dark);
+  background-color: var(--color-light);
+
+  padding-inline: var(--container-padding-x);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

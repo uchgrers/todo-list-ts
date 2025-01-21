@@ -1,0 +1,43 @@
+@import "media";
+
+$container-width: 550px;
+$container-padding-x: 40px;
+
+@include mobile {
+  $container-width: 450px;
+}
+
+@include mobile-s {
+  $container-width: calc(100% - #{$container-padding-x * 2});
+}
+
+:root {
+  --color-dark: #191A23;
+  --color-light: #FFFFFF;
+  --color-gray: #F3F3F3;
+  --color-accent: #B9FF66;
+
+  --border: 1px solid var(--color-dark);
+  --border-radius: 14px;
+  --shadow: 0 4px 1px 0 var(--color-dark);
+
+  --font-family-base: 'Space Grotesk', sans-serif;
+
+  --input-height: 50px;
+
+
+
+  --container-width: 100%;
+  --container-padding-x: 40px;
+
+  --opacity: 0.5;
+  --transition-duration: 0.2s;
+
+  //@include mobile {
+  //  --container-width: 450px;
+  //}
+
+  @include mobile-s {
+    --container-width: 360px;
+  }
+}

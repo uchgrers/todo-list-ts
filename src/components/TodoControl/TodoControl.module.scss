@@ -1,0 +1,30 @@
+.control {
+  --controlBackgroundColor: var(--color-gray);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border: var(--border);
+  border-radius: 16px;
+  padding: 4px;
+  box-shadow: var(--shadow);
+  background-color: var(--controlBackgroundColor);
+  transition-duration: var(--transition-duration);
+
+  &:hover {
+    --controlBackgroundColor: var(--color-accent);
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-duration: var(--transition-duration);
+
+    &:hover {
+      opacity: var(--opacity);
+    }
+  }
+}

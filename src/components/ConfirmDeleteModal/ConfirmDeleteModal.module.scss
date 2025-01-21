@@ -1,0 +1,24 @@
+.confirm {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border: red solid;
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  color: var(--color-dark);
+  background: var(--color-gray);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+
+  &__control {
+    display: flex;
+    justify-content: space-between;
+  }
+}
