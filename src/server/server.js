@@ -6,6 +6,14 @@ const path = require("path");
 const port = 8000;
 const origin = 3000;
 
+const buildPath = path.join(__dirname, '../../build');
+
+app.use(express.static(buildPath));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+});
+
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -112,9 +120,3 @@ require('./routes/index')(app);
 app.listen(port, () => {
     console.log('Server is up and running');
 })
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../build/index.html'));
-});
-
-app.use(express.static(path.join(__dirname, '../../build')));
