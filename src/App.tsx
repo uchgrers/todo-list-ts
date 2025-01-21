@@ -19,7 +19,7 @@ function App() {
 
     const dispatch = useAppDispatch()
 
-    useEffect(() => {
+    // useEffect(() => {
         const fetchTodos = async () => {
             try {
                 await dispatch(getTodos({searchParams: ''}))
@@ -28,7 +28,7 @@ function App() {
             }
         }
         fetchTodos()
-    }, [dispatch])
+    // }, [dispatch])
 
     const addNewTodo = (e: React.FormEvent) => {
         if (text && text.header) {
