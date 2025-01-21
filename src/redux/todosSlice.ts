@@ -84,6 +84,11 @@ const todosSlice = createSlice({
             console.log(current(state))
             console.log(state.todos)
             console.log(action.payload)
+
+            if (!state.todos) {
+                state.todos = []
+            }
+
             state.todos.push(action.payload.todo)
             state.todosCount = action.payload.todosCount
             state.currentPage = Math.ceil(state.todosCount / state.pageSize)
