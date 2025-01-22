@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const path = require("path");
+const cookieParser = require("cookie-parser");
 const port = 8000;
 const origin = 3000;
 
@@ -17,6 +18,13 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
+
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+    req.userId = req.cookies.userId;
+    next();
+})
 
 app.use(cors({
     origin: `http://localhost:${origin}`,
@@ -60,9 +68,11 @@ app.post('/todos', (req, res) => {
         id: todos.length,
         header: req.body.header,
         description: req.body.description,
-        completed: false
+        completed: false,
+        userId: req.userId
     }
     todos = [...todos, newTodo]
+    const userTodos = todos.filter(todo => todo.userId === req.userId)
     res.send(createPostResponse(0, [], {
         todo: {
             id: newTodo.id,
@@ -70,29 +80,30 @@ app.post('/todos', (req, res) => {
             description: newTodo.description,
             completed: false
         },
-        todosCount: todos.length
+        todosCount: userTodos.length
     }))
 })
 
 app.put('/todos', (req, res) => {
+    let userTodos = todos.filter(todo => todo.userId === req.userId)
     if (req.body.type === 'remove') {
-        todos = todos.filter(todo => todo.id !== req.body.id)
-        for (let i = req.body.id; i < todos.length; i++) {
-            todos[i].id = i
+        userTodos = userTodos.filter(todo => todo.id !== req.body.id)
+        for (let i = req.body.id; i < userTodos.length; i++) {
+            userTodos[i].id = i
         }
         res.send(createDeleteResponse(0, [], {
-            todos,
-            todosCount: todos.length
+            userTodos,
+            todosCount: userTodos.length
         }))
     } else if (req.body.type === 'edit') {
-        todos[req.body.id].header = req.body.header
-        todos[req.body.id].description = req.body.description
-        res.send(createPutResponse(0, [], todos[req.body.id]))
+        userTodos[req.body.id].header = req.body.header
+        userTodos[req.body.id].description = req.body.description
+        res.send(createPutResponse(0, [], userTodos[req.body.id]))
     } else if (req.body.type === 'complete') {
-        todos[req.body.id].completed = !todos[req.body.id].completed
+        userTodos[req.body.id].completed = !userTodos[req.body.id].completed
         res.send(createPutResponse(0, [], {
             id: req.body.id,
-            completed: todos[req.body.id].completed
+            completed: userTodos[req.body.id].completed
         }))
     }
 
@@ -100,11 +111,11 @@ app.put('/todos', (req, res) => {
 
 app.get('/todos', (req, res) => {
     const searchParams = req.query.searchParams
-    console.log(req.query)
+    const userTodos = todos.filter(todo => todo.userId === req.userId)
     const requestedTodos = searchParams ?
-        todos.filter(todo => todo.header.includes(searchParams)
+        userTodos.filter(todo => todo.header.includes(searchParams)
             || todo.description.includes(searchParams))
-        : todos
+        : userTodos
     res.send({
         todos: requestedTodos,
         todosCount: requestedTodos.length
