@@ -1,0 +1,8 @@
+@mixin text-align-left {
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow: hidden;
+}

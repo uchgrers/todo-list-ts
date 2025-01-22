@@ -1,9 +1,12 @@
+@import "src/styles/mixins";
+
 .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 20px;
 
+  --maxTextWidth: 320px;
   --indicatorRotate: 90deg;
 
   &__body {
@@ -40,25 +43,28 @@
     align-items: center;
     column-gap: 10px;
     width: 100%;
+    max-width: var(--maxTextWidth);
     padding: 20px 0;
+
+    @include text-align-left;
 
     &:hover {
       cursor: pointer;
+    }
+
+    & div {
+      flex-shrink: 100;
     }
   }
 
   &__description {
     display: block;
     width: 100%;
-    max-width: 320px;
+    max-width: var(--maxTextWidth);
     border-top: 1px gray solid;
     padding: 20px 0;
-    text-align: left;
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    word-wrap: break-word;
-    overflow: hidden;
+
+    @include text-align-left;
   }
 
   &__indicator {

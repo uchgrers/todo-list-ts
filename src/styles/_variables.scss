@@ -8,7 +8,7 @@ $container-padding-x: 40px;
 }
 
 @include mobile-s {
-  $container-width: calc(100% - #{$container-padding-x * 2});
+  //$container-width: calc(100% - #{$container-padding-x * 2});
 }
 
 :root {
