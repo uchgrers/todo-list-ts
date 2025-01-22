@@ -80,9 +80,13 @@ const todosSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(addTodo.fulfilled, (state, action) => {
+            console.log(current(state))
+            console.log(action.payload)
             state.todos.push(action.payload.todo)
             state.todosCount = action.payload.todosCount
-            state.currentPage = Math.ceil(state.todosCount / state.pageSize)
+            if (Math.ceil(state.todosCount / state.pageSize) > 0) {
+                state.currentPage = Math.ceil(state.todosCount / state.pageSize)
+            }
         })
         builder.addCase(getTodos.fulfilled, (state, action) => {
             state.todos = action.payload.todos

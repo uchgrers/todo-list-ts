@@ -64,15 +64,15 @@ const createDeleteResponse = (statusCode, messages, data) => {
 }
 
 app.post('/todos', (req, res) => {
+    let userTodos = todos.filter(todo => todo.userId === req.userId)
     const newTodo = {
-        id: todos.length,
+        id: userTodos.length,
         header: req.body.header,
         description: req.body.description,
         completed: false,
         userId: req.userId
     }
     todos = [...todos, newTodo]
-    const userTodos = todos.filter(todo => todo.userId === req.userId)
     res.send(createPostResponse(0, [], {
         todo: {
             id: newTodo.id,
@@ -87,12 +87,14 @@ app.post('/todos', (req, res) => {
 app.put('/todos', (req, res) => {
     let userTodos = todos.filter(todo => todo.userId === req.userId)
     if (req.body.type === 'remove') {
+        const taskToDelete = todos.find(todo => todo.userId === req.userId)
+        todos = todos.filter(todo => todo.userId !== taskToDelete.userId)
         userTodos = userTodos.filter(todo => todo.id !== req.body.id)
         for (let i = req.body.id; i < userTodos.length; i++) {
             userTodos[i].id = i
         }
         res.send(createDeleteResponse(0, [], {
-            userTodos,
+            todos: userTodos,
             todosCount: userTodos.length
         }))
     } else if (req.body.type === 'edit') {
