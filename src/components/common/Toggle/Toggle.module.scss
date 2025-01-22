@@ -55,10 +55,6 @@
         background-color: var(--color-accent);
       }
       transform: translateX(135%);
-
-      @include mobile-s {
-        transform: translateX(50%);
-      }
     }
 
     &:has(&_input:checked) {

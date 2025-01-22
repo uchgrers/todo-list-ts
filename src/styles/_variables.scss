@@ -3,14 +3,6 @@
 $container-width: 550px;
 $container-padding-x: 40px;
 
-@include mobile {
-  $container-width: 450px;
-}
-
-@include mobile-s {
-  $container-width: calc(100% - #{$container-padding-x * 2});
-}
-
 :root {
   --color-dark: #191A23;
   --color-light: #FFFFFF;
@@ -32,10 +24,6 @@ $container-padding-x: 40px;
 
   --opacity: 0.5;
   --transition-duration: 0.2s;
-
-  //@include mobile {
-  //  --container-width: 450px;
-  //}
 
   @include mobile-s {
     --container-width: 360px;

@@ -16,7 +16,8 @@
     user-select: none;
 
     @include mobile-s {
-        width: 100%;
+        padding: 20px calc(var(--container-padding-x) / 2);
+        min-width: 320px;
         max-width: var(--container-width);
     }
 }
