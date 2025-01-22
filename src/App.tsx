@@ -16,8 +16,20 @@ function App() {
     const [isLoading, setIsLoading] = useState(true)
     const [openForm, setOpenForm] = useState(false)
     const [keepFormOpen, setKeepFormOpen] = useState(false)
+    const [userId, setUserId] = useState<string | null>(null)
 
     const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        const match = document.cookie.match(/userId=([^;]+)/);
+        if (match) {
+            setUserId(match[1])
+        } else {
+            const createdUserId = crypto.randomUUID()
+            document.cookie = `userId=${createdUserId}; path=/; max-age=${60 * 60 * 24 * 365}`
+            setUserId(userId)
+        }
+    }, [])
 
     useEffect(() => {
         const fetchTodos = async () => {
@@ -63,7 +75,7 @@ function App() {
                 text={text}
                 openForm={openForm}
             />
-            {isLoading ? <Preloader/> : <TodosList />}
+            {isLoading ? <Preloader/> : <TodosList/>}
             <Paginator/>
         </div>
     );
