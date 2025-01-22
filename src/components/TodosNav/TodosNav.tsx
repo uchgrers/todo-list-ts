@@ -20,13 +20,12 @@ const TodosNav: React.FC<TodosNavType> = (props) => {
 
     const dispatch = useAppDispatch()
 
-    const onCriterionChange = (e: any) => {
-        dispatch(changeCriterion(e.target.value))
+    const onCriterionChange = (e: React.FormEvent<HTMLSelectElement>) => {
+        dispatch(changeCriterion(e.currentTarget.value))
     }
 
     return (
         <div className={styles.container}>
-
             <button onClick={() => setIsShown(!isShown)}
                     className={`${styles.container__openNavButton} visibleMobile`}
             >

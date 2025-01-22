@@ -73,7 +73,7 @@ const todosSlice = createSlice({
         },
         changeCriterion(state, action) {
             state.todosCriterion = action.payload
-            if (state.currentPage > Math.ceil(state.todosCount / state.pageSize)) {
+            if (state.currentPage > Math.ceil(state.todosCount / state.pageSize) && Math.ceil(state.todosCount / state.pageSize) > 0) {
                 state.currentPage = Math.ceil(state.todosCount / state.pageSize)
             }
         }
