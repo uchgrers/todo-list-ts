@@ -8,11 +8,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-inline: 0 auto;
+    margin: 0 auto;
     padding: 40px var(--container-padding-x);
     width: 100%;
     max-width: calc($container-width + $container-padding-x * 2);
     user-select: none;
+    //border: red solid;
 
     @include mobile-s {
         padding: 20px calc(var(--container-padding-x) / 2);
