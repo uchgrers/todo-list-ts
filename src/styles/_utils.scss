@@ -3,7 +3,6 @@
 .hiddenMobile {
   @include mobile-s {
     display: none !important;
-    width: 0;
   }
 }
 
