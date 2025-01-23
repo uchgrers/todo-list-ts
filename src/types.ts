@@ -14,7 +14,8 @@ export type TodosSliceType = {
     pageSize: number,
     currentPage: number,
     todosCriterion: ShownTodosCriterion,
-    addingTodo: boolean
+    addingTodo: boolean,
+    todosToBeRemoved: Array<number>
 }
 
 export type GetTodosType = string

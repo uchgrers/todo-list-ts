@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, current} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {
     IdType,
     TodoItemType,
@@ -18,7 +18,8 @@ const initialState: TodosSliceType = {
     pageSize: 5,
     currentPage: 1,
     todosCriterion: 'all',
-    addingTodo: false
+    addingTodo: false,
+    todosToBeRemoved: []
 }
 
 export const getTodos = createAsyncThunk<GetTodosResponseType, { searchParams: string }>(
@@ -44,8 +45,11 @@ export const completeTodo = createAsyncThunk<CompleteTodoResponseType, IdType>(
 
 export const removeTodo = createAsyncThunk<RemoveTodoResponseType, IdType>(
     'todos/removeTodo',
-    async function (id) {
-        return await todosAPI.removeTodo(id)
+    async function (id, {dispatch}) {
+        dispatch(setTodoToRemoval(id))
+        const result = await todosAPI.removeTodo(id)
+        dispatch(removeTodoIdFromRemovingList(id))
+        return result
     }
 )
 
@@ -77,6 +81,12 @@ const todosSlice = createSlice({
             if (state.currentPage > Math.ceil(state.todosCount / state.pageSize) && Math.ceil(state.todosCount / state.pageSize) > 0) {
                 state.currentPage = Math.ceil(state.todosCount / state.pageSize)
             }
+        },
+        setTodoToRemoval(state, action) {
+            state.todosToBeRemoved.push(action.payload)
+        },
+        removeTodoIdFromRemovingList(state, action) {
+            state.todosToBeRemoved = state.todosToBeRemoved.filter(todoId => todoId !== action.payload)
         }
     },
     extraReducers: builder => {
@@ -112,5 +122,13 @@ const todosSlice = createSlice({
     }
 })
 
-export const {changeCurrentPage, changePageSize, changeCriterion, setTodosCount} = todosSlice.actions
+export const {
+    changeCurrentPage,
+    changePageSize,
+    changeCriterion,
+    setTodosCount,
+    setTodoToRemoval,
+    removeTodoIdFromRemovingList
+} = todosSlice.actions
+
 export default todosSlice.reducer
