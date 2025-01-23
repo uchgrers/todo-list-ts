@@ -16,7 +16,7 @@
 
     @include mobile-s {
         padding: 20px calc(var(--container-padding-x) / 2);
-        min-width: 280px;
+        min-width: var(--min-container-width);
         max-width: var(--container-width);
     }
 }
