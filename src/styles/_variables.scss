@@ -1,6 +1,6 @@
 @import "media";
 
-$container-width: 450px;
+$container-width: 550px;
 $container-padding-x: 40px;
 
 :root {
@@ -17,14 +17,19 @@ $container-padding-x: 40px;
 
   --input-height: 50px;
 
-  --container-width: 550px;
+  --container-width: 440px;
   --min-container-width: 320px;
   --container-padding-x: 40px;
 
   --opacity: 0.5;
   --transition-duration: 0.2s;
 
+  @include mobile {
+    --container-padding-x: 20px;
+  }
+
   @include mobile-s {
     --container-width: 360px;
+    --container-padding-x: 4px;
   }
 }
