@@ -17,7 +17,8 @@ const initialState: TodosSliceType = {
     todosCount: 0,
     pageSize: 5,
     currentPage: 1,
-    todosCriterion: 'all'
+    todosCriterion: 'all',
+    addingTodo: false
 }
 
 export const getTodos = createAsyncThunk<GetTodosResponseType, { searchParams: string }>(
@@ -79,9 +80,12 @@ const todosSlice = createSlice({
         }
     },
     extraReducers: builder => {
+        builder.addCase(addTodo.pending, (state, action) => {
+            state.addingTodo = true
+        })
         builder.addCase(addTodo.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.todos.push(action.payload.todo)
+            state.addingTodo = false
             state.todosCount = action.payload.todosCount
             if (Math.ceil(state.todosCount / state.pageSize) > 0) {
                 state.currentPage = Math.ceil(state.todosCount / state.pageSize)
