@@ -73,6 +73,7 @@ app.post('/todos', (req, res) => {
         userId: req.userId
     }
     todos = [...todos, newTodo]
+    console.log('todos after post request: ', todos)
     res.send(createPostResponse(0, [], {
         todo: {
             id: newTodo.id,
@@ -87,8 +88,8 @@ app.post('/todos', (req, res) => {
 app.put('/todos', (req, res) => {
     let userTodos = todos.filter(todo => todo.userId === req.userId)
     if (req.body.type === 'remove') {
-        const taskToDelete = todos.find(todo => todo.userId === req.userId)
-        todos = todos.filter(todo => todo.userId !== taskToDelete.userId)
+        const taskToDelete = todos.find(todo => todo.userId === req.userId && todo.id === req.body.id)
+        todos = todos.filter(todo => todo !== taskToDelete)
         userTodos = userTodos.filter(todo => todo.id !== req.body.id)
         for (let i = req.body.id; i < userTodos.length; i++) {
             userTodos[i].id = i
