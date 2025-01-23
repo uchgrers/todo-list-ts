@@ -28,7 +28,7 @@ const TodosNav: React.FC<TodosNavType> = (props) => {
         <div className={styles.container}>
             <button onClick={() => setIsShown(!isShown)}
                     className={`${styles.container__openNavButton} visibleMobile`}
-            >
+                >
                 {isShown ? 'Hide navigation' : 'Show navigation'}
             </button>
             <nav className={

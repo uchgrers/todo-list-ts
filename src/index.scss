@@ -19,6 +19,10 @@ body {
   background-color: var(--color-light);
 
   padding-inline: var(--container-padding-x);
+
+  @include mobile-s {
+    font-size: 14px;
+  }
 }
 
 code {
