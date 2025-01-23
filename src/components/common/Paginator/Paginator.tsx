@@ -17,6 +17,10 @@ const Paginator = () => {
         }
     },[currentPage, pageSize, itemsCount])
 
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }, [currentPage])
+
     const onPageChange = (action: number) => {
         const newPage = currentPage + action
         if (newPage >= 1 && newPage <= Math.ceil(itemsCount / pageSize)) {
@@ -27,10 +31,6 @@ const Paginator = () => {
     const onPageSizeChange = (e: any) => {
         dispatch(changePageSize(e.target.value))
     }
-
-    useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    }, [currentPage])
 
     return (
         <div className={styles.nav}>
