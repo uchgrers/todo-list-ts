@@ -73,7 +73,7 @@ app.post('/todos', (req, res) => {
         userId: req.userId
     }
     todos = [...todos, newTodo]
-    console.log('todos after post request: ', todos)
+    userTodos = [...userTodos, newTodo]
     res.send(createPostResponse(0, [], {
         todo: {
             id: newTodo.id,
