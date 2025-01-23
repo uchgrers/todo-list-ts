@@ -3,12 +3,14 @@ import styles from './TodosList.module.scss';
 import {useAppDispatch, useAppSelector, useTodosSelector} from "../../redux/hooks";
 import TodosItem from "../TodosItem/TodosItem";
 import {setTodosCount} from "../../redux/todosSlice";
+import Preloader from "../common/Preloader/Preloader";
 
 const TodosList = () => {
     const dispatch = useAppDispatch()
     const pageSize = useAppSelector(state => state.todosReducer.pageSize)
     const currentPage = useAppSelector(state => state.todosReducer.currentPage)
     const criterion = useAppSelector(state => state.todosReducer.todosCriterion)
+    const addingTodo = useAppSelector(state => state.todosReducer.addingTodo)
 
     const filteredTasks = useTodosSelector({currentPage, pageSize, criterion})
     const todos = filteredTasks.tasks
@@ -30,6 +32,7 @@ const TodosList = () => {
     return (
         <ul className={styles.list}>
             {todosComponents}
+            {addingTodo && <Preloader/>}
         </ul>
     );
 };
