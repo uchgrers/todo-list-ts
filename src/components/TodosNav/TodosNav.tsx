@@ -50,7 +50,7 @@ const TodosNav: React.FC<TodosNavType> = (props) => {
                     </div>
                 </div>
                 <SearchForm/>
-                <button onClick={() => props.setOpenForm(true)}>Add new task</button>
+                <button onClick={() => props.setOpenForm(true)}>Create new task</button>
             </nav>
         </div>
     );
