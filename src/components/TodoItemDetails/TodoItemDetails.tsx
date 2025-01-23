@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../TodosItem/TodosItem.module.scss";
+import styles from "../TodoItem/TodosItem.module.scss";
 
 type TodoItemDetailsType = {
     completed: boolean,

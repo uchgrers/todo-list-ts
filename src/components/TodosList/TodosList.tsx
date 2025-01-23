@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo} from 'react';
 import styles from './TodosList.module.scss';
 import {useAppDispatch, useAppSelector, useTodosSelector} from "../../redux/hooks";
-import TodosItem from "../TodosItem/TodosItem";
+import TodoItem from "./../TodoItem/TodoItem";
 import {setTodosCount} from "../../redux/todosSlice";
 import Preloader from "../common/Preloader/Preloader";
 
@@ -17,11 +17,11 @@ const TodosList = () => {
 
     const todosComponents = useMemo(() => {
         return todos
-            ?.map((todo) => <TodosItem id={todo.id}
-                                       header={todo.header}
-                                       description={todo.description}
-                                       key={todo.id}
-                                       completed={todo.completed}
+            ?.map((todo) => <TodoItem id={todo.id}
+                                      header={todo.header}
+                                      description={todo.description}
+                                      key={todo.id}
+                                      completed={todo.completed}
             />)
     }, [todos])
 
