@@ -1,46 +1,48 @@
-# Todo list
+# To-Do List Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание проекта
+To-Do List — это веб-приложение для управления задачами, созданное с использованием современных технологий.  
+Приложение позволяет пользователям добавлять, редактировать и удалять задачи. Оно включает серверную часть, реализованную на **Express.js**, с регистрацией пользователей через cookies.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Функционал
+- Добавление, редактирование и удаление задач.
+- Регистрация пользователя через cookies при первом подключении.
+- Хранение данных на серверной стороне.
+- Простой и удобный пользовательский интерфейс.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Используемые технологии
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Frontend
+- React
+- Redux Toolkit
+- TypeScript
+- SCSS
 
-### `npm test`
+### Backend
+- Node.js
+- Express.js
+- Cookies для авторизации
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Сервисы и инструменты
+- Railway (для деплоя)
+- Git/GitHub
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Демо
+[Посмотреть проект](#)  
+*(https://todo-list-ts-production.up.railway.app/)*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Установка и запуск
 
-### `npm run eject`
+### Frontend
+npm run client
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Backend
+npm run server

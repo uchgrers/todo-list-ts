@@ -12,7 +12,7 @@ import {
     todosAPI
 } from "../api/todosApi";
 
-const initialState: TodosSliceType = {
+export const initialState: TodosSliceType = {
     todos: [],
     todosCount: 0,
     pageSize: 5,
