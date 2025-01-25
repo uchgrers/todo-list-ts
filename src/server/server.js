@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const port = 8000;
+const port = process.env.PORT || 8000;
 const origin = 3000;
 
 const buildPath = path.join(__dirname, '../../build');
