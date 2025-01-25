@@ -34,8 +34,7 @@ To-Do List — это веб-приложение для управления з
 ---
 
 ## Демо
-[Посмотреть проект](#)  
-*(https://todo-list-ts-production.up.railway.app/)*
+[Посмотреть проект](#https://todo-list-ts-production.up.railway.app/)  
 
 ---
 
