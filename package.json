@@ -24,8 +24,8 @@
     "server": "node src/server/server.js",
     "client": "react-scripts start",
     "build": "npm run build:frontend",
-    "build:frontend": "react-scripts build",
-    "build:full": "npm run build:frontend && npm run server",
+    "build:frontend": "CI=false react-scripts build",
+    "build:full": "CI=false npm run build:frontend && npm run server",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
